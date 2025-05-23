@@ -6,12 +6,14 @@ export interface Label {
 }
 
 export async function getLabelsFromOwners(
-  owners: Set<string>
+  owners: Set<string>,
+  label_map?: Map<string, string>
 ): Promise<Set<Label>> {
   const labels: Set<Label> = new Set([])
   for (const owner of owners) {
+    const label = label_map?.get(owner) ?? owner
     labels.add({
-      name: `${owner}`,
+      name: `${label}`,
       // From the documentation: https://octokit.github.io/rest.js/#octokit-routes-issues-create-label
       // > The hexadecimal color code for the label, without the leading #
       // randomcolor() returns a color code with a '#' prefix, so we remove it

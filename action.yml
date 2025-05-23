@@ -5,6 +5,8 @@ inputs:
   githubToken:
     description: 'Github Oauth Token for the repo'
     required: true
+  owners-to-labels:
+    description: 'Map of CODEOWNERS to label names. Keys are CODEOWNERS and values are labels'
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'lib/main.js'
